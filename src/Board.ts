@@ -1,9 +1,9 @@
 export default class Board {
-    rows: number;
     columns: number;
+    rows: number;
 
-    constructor(rows: number, columns: number) {
-        this.rows = rows;
+    constructor(columns: number, rows: number) {
         this.columns = columns;
+        this.rows = rows;
     }
 };
