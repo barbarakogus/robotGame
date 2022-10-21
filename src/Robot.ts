@@ -28,7 +28,11 @@ export default class Robot {
                 } else if (command === 'R') {
                     this.face = 'E'
                 } else {
-                    this.position = new Position(this.position.xAxis, this.position.yAxis - 1)
+                    if (this.position.yAxis === 0) {
+                        this.position = new Position(this.position.xAxis, this.position.yAxis)
+                    } else {
+                        this.position = new Position(this.position.xAxis, this.position.yAxis - 1)
+                    }
                 }
                 break
             case 'S':
@@ -37,7 +41,11 @@ export default class Robot {
                 } else if (command === 'R') {
                     this.face = 'O'
                 } else {
-                    this.position = new Position(this.position.xAxis, this.position.yAxis + 1)
+                    if (this.position.yAxis === this.board.rows) {
+                        this.position = new Position(this.position.xAxis, this.position.yAxis)
+                    } else {
+                        this.position = new Position(this.position.xAxis, this.position.yAxis + 1)
+                    }
                 }
                 break;
             case 'E':
@@ -46,7 +54,11 @@ export default class Robot {
                 } else if (command === 'R') {
                     this.face = 'S'
                 } else {
-                    this.position = new Position(this.position.xAxis + 1, this.position.yAxis)
+                    if (this.position.xAxis === this.board.columns) {
+                        this.position = new Position(this.position.xAxis, this.position.yAxis)
+                    } else {
+                        this.position = new Position(this.position.xAxis + 1, this.position.yAxis)
+                    }
                 }
                 break;
             case 'O':
@@ -55,7 +67,11 @@ export default class Robot {
                 } else if (command === 'R') {
                     this.face = 'N'
                 } else {
-                    this.position = new Position(this.position.xAxis - 1, this.position.yAxis)
+                    if (this.position.xAxis === 0) {
+                        this.position = new Position(this.position.xAxis, this.position.yAxis)
+                    } else {
+                        this.position = new Position(this.position.xAxis - 1, this.position.yAxis)
+                    }
                 }
                 break;
         }

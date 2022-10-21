@@ -101,3 +101,38 @@ describe('Testing the Robot executeAll method', () => {
     })
 
 })
+
+describe('Testing the boundaries of the board', () => {
+    it('Robot should not move when the face is N ', () => {
+        const board = new Board(4, 3);
+        const position = new Position(1, 0)
+        const robot = new Robot(position, 'N', board);
+        robot.execute('F');
+        expect(robot.position).toEqual(position);
+        expect(robot.face).toBe('N');
+    })
+    it('Robot should not move when the face is S ', () => {
+        const board = new Board(4, 3);
+        const position = new Position(1, 3)
+        const robot = new Robot(position, 'S', board);
+        robot.execute('F');
+        expect(robot.position).toEqual(position);
+        expect(robot.face).toBe('S');
+    })
+    it('Robot should not move when the face is E ', () => {
+        const board = new Board(4, 3);
+        const position = new Position(4, 0)
+        const robot = new Robot(position, 'E', board);
+        robot.execute('F');
+        expect(robot.position).toEqual(position);
+        expect(robot.face).toBe('E');
+    })
+    it('Robot should not move when the face is O ', () => {
+        const board = new Board(4, 3);
+        const position = new Position(0, 3)
+        const robot = new Robot(position, 'O', board);
+        robot.execute('F');
+        expect(robot.position).toEqual(position);
+        expect(robot.face).toBe('O');
+    })
+})
